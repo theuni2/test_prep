@@ -66,25 +66,164 @@
 //   );
 // }
 
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import Link from "next/link";
+// import { usePathname } from "next/navigation";
+// import { ChevronDown, Menu, X, Phone } from "lucide-react";
+
+// const navLinks = [
+//   { name: 'Programs', href: '/#programs', hasDropdown: false },
+//   { name: 'Tutors', href: '/#tutors' },
+//   { name: 'Success Stories', href: '/#results' },
+// ];
+
+// const programItems = [
+//   { name: 'AP Courses', href: '/programs/ap' },
+//   { name: 'IB Program', href: '/programs/ib' },
+//   { name: 'Olympiad Prep', href: '/programs/olympiads' },
+//   { name: 'Test Prep', href: '/programs/test-prep' },
+// ];
+
+// export default function AcademiXNavbar() {
+//   const [isScrolled, setIsScrolled] = useState(false);
+//   const [isOpen, setIsOpen] = useState(false);
+//   const pathname = usePathname();
+
+//   useEffect(() => {
+//     const handleScroll = () => setIsScrolled(window.scrollY > 20);
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   return (
+//     <motion.nav
+//       initial={{ y: -100 }}
+//       animate={{ y: 0 }}
+//       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+//         isScrolled ? "py-4" : "py-8"
+//       }`}
+//     >
+//       <div className="max-w-7xl mx-auto px-6">
+//         <div className={`relative flex items-center justify-between px-8 rounded-[2rem] transition-all duration-500 ${
+//           isScrolled 
+//             ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,86,179,0.08)] border border-white/20 py-4" 
+//             : "bg-transparent py-0"
+//         }`}>
+          
+//           {/* Brand - Styled per Deck p.14 */}
+//           <Link href="/" className="flex items-center gap-3 group">
+//             <motion.div 
+//               whileHover={{ rotate: 15 }}
+//               className="w-10 h-10 bg-[#0056b3] rounded-full flex items-center justify-center shadow-lg shadow-blue-200"
+//             >
+//               {/* <span className="text-white text-[10px] font-black underline decoration-yellow-400 decoration-2 underline-offset-4">A</span> */}
+//               <img src='logo.png' alt="logo" className="w-5 h-5" />
+//             </motion.div>
+//             <span className="text-2xl font-black tracking-tighter text-gray-900">
+//               Academi<span className="text-[#0056b3]">X</span>
+//             </span>
+//           </Link>
+
+//           {/* Desktop Nav - Staggered Animation */}
+//           <div className="hidden lg:flex items-center gap-10">
+//             {navLinks.map((link, i) => (
+//               <div key={link.name} className="relative group py-2">
+//                 <Link 
+//                   href={link.href}
+//                   className={`text-sm font-bold tracking-tight transition-colors flex items-center gap-1 ${
+//                     pathname === link.href ? "text-[#0056b3]" : "text-gray-600 hover:text-[#0056b3]"
+//                   }`}
+//                 >
+//                   {link.name}
+//                   {link.hasDropdown && <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform duration-300" />}
+//                 </Link>
+                
+//                 {link.hasDropdown && (
+//                   <div className="absolute top-full -left-6 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+//                     <div className="w-64 bg-white rounded-3xl shadow-2xl border border-gray-50 p-4 grid gap-1">
+//                       {programItems.map((item) => (
+//                         <Link 
+//                           key={item.name} 
+//                           href={item.href}
+//                           className="px-4 py-3 rounded-2xl hover:bg-blue-50 text-sm font-bold text-gray-600 hover:text-[#0056b3] transition-colors"
+//                         >
+//                           {item.name}
+//                         </Link>
+//                       ))}
+//                     </div>
+//                   </div>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+
+//           {/* Action Area */}
+//           <div className="flex items-center gap-6">
+//             <Link 
+//               href="tel:+919888661618" 
+//               className="hidden xl:flex items-center gap-2 text-sm font-black text-gray-900 hover:text-[#0056b3] transition-colors"
+//             >
+//               <Phone className="w-4 h-4 fill-[#0056b3] text-[#0056b3]" />
+//               +91 98886 61618
+//             </Link>
+            
+//             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+//               <Link 
+//                 href="/contact" 
+//                 className="px-8 py-3.5 bg-[#0056b3] text-white text-sm font-black rounded-full shadow-xl shadow-blue-200 hover:bg-black transition-all"
+//               >
+//                 Free Demo
+//               </Link>
+//             </motion.div>
+
+//             {/* Mobile Toggle */}
+//             <button className="lg:hidden p-2 text-gray-900" onClick={() => setIsOpen(!isOpen)}>
+//               {isOpen ? <X /> : <Menu />}
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Mobile Menu Overlay */}
+//       <AnimatePresence>
+//         {isOpen && (
+//           <motion.div
+//             initial={{ opacity: 0, height: 0 }}
+//             animate={{ opacity: 1, height: "auto" }}
+//             exit={{ opacity: 0, height: 0 }}
+//             className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
+//           >
+//             <div className="p-8 flex flex-col gap-6">
+//               {navLinks.map((link) => (
+//                 <Link key={link.name} href={link.href} className="text-xl font-black text-gray-900" onClick={() => setIsOpen(false)}>
+//                   {link.name}
+//                 </Link>
+//               ))}
+//               <hr className="border-gray-100" />
+//               <Link href="tel:+919888661618" className="text-lg font-bold text-[#0056b3]">+91 98886 61618</Link>
+//             </div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </motion.nav>
+//   );
+// }
+
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, Phone, ArrowRight } from "lucide-react";
 
 const navLinks = [
-  { name: 'Programs', href: '/#programs', hasDropdown: false },
+  { name: 'Programs', href: '/#programs' },
   { name: 'Tutors', href: '/#tutors' },
   { name: 'Success Stories', href: '/#results' },
-];
-
-const programItems = [
-  { name: 'AP Courses', href: '/programs/ap' },
-  { name: 'IB Program', href: '/programs/ib' },
-  { name: 'Olympiad Prep', href: '/programs/olympiads' },
-  { name: 'Test Prep', href: '/programs/test-prep' },
 ];
 
 export default function AcademiXNavbar() {
@@ -103,85 +242,73 @@ export default function AcademiXNavbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? "py-4" : "py-8"
+        isScrolled ? "py-2 md:py-4" : "py-6 md:py-8"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className={`relative flex items-center justify-between px-8 rounded-[2rem] transition-all duration-500 ${
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`relative flex items-center justify-between px-4 sm:px-8 rounded-[2rem] transition-all duration-500 ${
           isScrolled 
-            ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,86,179,0.08)] border border-white/20 py-4" 
-            : "bg-transparent py-0"
+            ? "bg-white/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,86,179,0.1)] border border-white/20 py-3 md:py-4" 
+            : "bg-transparent py-2 md:py-0"
         }`}>
           
-          {/* Brand - Styled per Deck p.14 */}
-          <Link href="/" className="flex items-center gap-3 group">
+          {/* Brand */}
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <motion.div 
               whileHover={{ rotate: 15 }}
-              className="w-10 h-10 bg-[#0056b3] rounded-full flex items-center justify-center shadow-lg shadow-blue-200"
+              className="w-8 h-8 sm:w-10 sm:h-10 bg-[#0056b3] rounded-full flex items-center justify-center shadow-lg shadow-blue-200"
             >
-              {/* <span className="text-white text-[10px] font-black underline decoration-yellow-400 decoration-2 underline-offset-4">A</span> */}
-              <img src='logo.png' alt="logo" className="w-5 h-5" />
+              <img src='logo.png' alt="logo" className="w-4 h-4 sm:w-5 sm:h-5 object-contain" />
             </motion.div>
-            <span className="text-2xl font-black tracking-tighter text-gray-900">
+            <span className="text-xl sm:text-2xl font-black tracking-tighter text-gray-900">
               Academi<span className="text-[#0056b3]">X</span>
             </span>
           </Link>
 
-          {/* Desktop Nav - Staggered Animation */}
-          <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link, i) => (
-              <div key={link.name} className="relative group py-2">
-                <Link 
-                  href={link.href}
-                  className={`text-sm font-bold tracking-tight transition-colors flex items-center gap-1 ${
-                    pathname === link.href ? "text-[#0056b3]" : "text-gray-600 hover:text-[#0056b3]"
-                  }`}
-                >
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform duration-300" />}
-                </Link>
-                
-                {link.hasDropdown && (
-                  <div className="absolute top-full -left-6 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                    <div className="w-64 bg-white rounded-3xl shadow-2xl border border-gray-50 p-4 grid gap-1">
-                      {programItems.map((item) => (
-                        <Link 
-                          key={item.name} 
-                          href={item.href}
-                          className="px-4 py-3 rounded-2xl hover:bg-blue-50 text-sm font-bold text-gray-600 hover:text-[#0056b3] transition-colors"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name}
+                href={link.href}
+                className={`text-sm font-bold tracking-tight transition-colors hover:text-[#0056b3] ${
+                  pathname === link.href ? "text-[#0056b3]" : "text-gray-600"
+                }`}
+              >
+                {link.name}
+              </Link>
             ))}
           </div>
 
           {/* Action Area */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <Link 
               href="tel:+919888661618" 
-              className="hidden xl:flex items-center gap-2 text-sm font-black text-gray-900 hover:text-[#0056b3] transition-colors"
+              className="hidden md:flex items-center gap-2 text-sm font-black text-gray-900 hover:text-[#0056b3] transition-colors"
             >
-              <Phone className="w-4 h-4 fill-[#0056b3] text-[#0056b3]" />
-              +91 98886 61618
+              <Phone className="w-3.5 h-3.5 fill-[#0056b3] text-[#0056b3]" />
+              <span className="hidden xl:inline">+91 98886 61618</span>
             </Link>
             
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div 
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }}
+              className="hidden sm:block"
+            >
               <Link 
                 href="/contact" 
-                className="px-8 py-3.5 bg-[#0056b3] text-white text-sm font-black rounded-full shadow-xl shadow-blue-200 hover:bg-black transition-all"
+                className="px-5 py-2.5 sm:px-8 sm:py-3.5 bg-[#0056b3] text-white text-xs sm:text-sm font-black rounded-full shadow-xl shadow-blue-200 hover:bg-black transition-all inline-block whitespace-nowrap"
               >
                 Free Demo
               </Link>
             </motion.div>
 
             {/* Mobile Toggle */}
-            <button className="lg:hidden p-2 text-gray-900" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X /> : <Menu />}
+            <button 
+              className="lg:hidden p-2 text-gray-900 hover:bg-gray-100 rounded-full transition-colors" 
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -191,19 +318,42 @@ export default function AcademiXNavbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 w-full px-4 pt-2 lg:hidden"
           >
-            <div className="p-8 flex flex-col gap-6">
+            <div className="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 p-8 flex flex-col gap-6">
               {navLinks.map((link) => (
-                <Link key={link.name} href={link.href} className="text-xl font-black text-gray-900" onClick={() => setIsOpen(false)}>
+                <Link 
+                  key={link.name} 
+                  href={link.href} 
+                  className="text-xl font-black text-gray-900 flex justify-between items-center group" 
+                  onClick={() => setIsOpen(false)}
+                >
                   {link.name}
+                  <ArrowRight className="text-[#0056b3] opacity-0 group-hover:opacity-100 transition-all -translate-x-4 group-hover:translate-x-0" />
                 </Link>
               ))}
               <hr className="border-gray-100" />
-              <Link href="tel:+919888661618" className="text-lg font-bold text-[#0056b3]">+91 98886 61618</Link>
+              <div className="flex flex-col gap-4">
+                <Link 
+                  href="tel:+919888661618" 
+                  className="flex items-center gap-3 text-lg font-bold text-gray-900"
+                >
+                  <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-[#0056b3] fill-[#0056b3]" />
+                  </div>
+                  +91 98886 61618
+                </Link>
+                <Link 
+                  href="/contact" 
+                  onClick={() => setIsOpen(false)}
+                  className="w-full py-5 bg-[#0056b3] text-white text-center font-black rounded-2xl shadow-xl shadow-blue-100 active:scale-95 transition-all"
+                >
+                  Book Free Demo
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
