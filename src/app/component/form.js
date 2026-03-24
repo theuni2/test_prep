@@ -431,7 +431,7 @@ export default function AdmissionsForm() {
                       <Loader2 className="w-6 h-6 animate-spin" />
                     ) : (
                       <>
-                        <span className="tracking-tight text-lg">Send to Milki & Download Brochure</span>
+                        <span className="tracking-tight text-lg">Submit & Download Brochure</span>
                         <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       </>
                     )}

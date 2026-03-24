@@ -106,6 +106,8 @@
 
 
 
+
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -133,7 +135,7 @@ const features = [
   },
   {
     title: "Specialized Curriculum",
-    desc: "Exam-specific courses for LSAT, UCAT, and Olympiads—tailored to you.",
+    desc: "Exam-specific courses for AP, IB, IGCSE, LSAT, UCAT, and Olympiads—tailored to you.",
     icon: <Zap className="w-6 h-6 text-[#0056b3]" />,
     className: "md:col-span-2 bg-white border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)]",
   },

@@ -58,7 +58,7 @@ export default function Footer() {
             <h4 className="text-xs font-black uppercase tracking-widest text-gray-500 mb-6">Get In Touch </h4>
             <div className="space-y-4">
               <p className="text-sm font-bold">
-                Coordinator: <span className="text-gray-400 font-medium">Milki </span>
+                For More <span className="text-gray-400 font-medium">Connect with us at </span>
               </p>
               <Link 
                 href="tel:+919888661618" 

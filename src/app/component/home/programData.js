@@ -270,6 +270,195 @@
 // }
 
 
+// "use client";
+
+// import { useState } from 'react';
+
+// const programData = {
+//   "AP Courses": {
+//     tagline: "Master the 5-point scale with Ivy-League level prep.",
+//     items: [
+//       { subject: "AP Calculus (BC)", price: "90,000 INR", sessions: "40-50", highlight: "Calculus Specialist" },
+//       { subject: "AP Chemistry", price: "90,000 INR", sessions: "40-50", highlight: "Lab Focus" },
+//       { subject: "AP Physics (IB)", price: "1,50,000 INR", sessions: "100", highlight: "Full Mastery" },
+//       { subject: "AP Psychology", price: "1L INR", sessions: "40-50", highlight: "Theory & Practice" },
+//     ]
+//   },
+//   "Competitive": {
+//     tagline: "Strategic entrance prep for G5 & Ivy League schools.",
+//     items: [
+//       { subject: "TMUA / TSA", price: "1.2L INR", sessions: "60", highlight: "Oxbridge Entry" },
+//       { subject: "UCAT / LNAT", price: "1,05,000 INR", sessions: "30-40", highlight: "Medical/Law" },
+//       { subject: "Olympiad Prep", price: "1,10,000 INR", sessions: "30-40", highlight: "AMC/SASMO" },
+//       { subject: "SATs / ACTs", price: "62,500 INR", sessions: "25+", highlight: "Strategy Focus" },
+//     ]
+//   }
+// };
+
+// export default function Programs() {
+//   const [activeTab, setActiveTab] = useState("AP Courses");
+
+//   return (
+//     <section style={{ padding: '120px 0', backgroundColor: '#ffffff', position: 'relative', overflow: 'hidden' }} id ="programs">
+      
+//       {/* Decorative background element */}
+//       <div style={{ position: 'absolute', top: 0, right: 0, width: '400px', height: '400px', backgroundColor: '#0056b3', opacity: '0.03', borderRadius: '50%', filter: 'blur(80px)', transform: 'translate(200px, -200px)' }} />
+
+//       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+        
+//         {/* Section Header */}
+//         <div style={{ marginBottom: '80px' }}>
+//           <span style={{ fontSize: '10px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.4em', color: '#0056b3', marginBottom: '16px', display: 'block' }}>
+//             Curriculum Specializations
+//           </span>
+//           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '32px' }}>
+//             <div style={{ maxWidth: '600px' }}>
+//               <h2 style={{ fontSize: '64px', fontWeight: '900', color: '#111827', letterSpacing: '-0.04em', lineHeight: '0.9', margin: 0 }}>
+//                 Specialized <br />
+//                 <span style={{ color: '#0056b3' }}>Programs.</span>
+//               </h2>
+//               <p style={{ marginTop: '24px', fontSize: '18px', color: '#6b7280', fontWeight: '500' }}>
+//                 {programData[activeTab].tagline}
+//               </p>
+//             </div>
+
+//             {/* Premium Tab Switcher */}
+//             <div style={{ 
+//               display: 'inline-flex', 
+//               padding: '6px', 
+//               backgroundColor: '#f3f4f6', 
+//               borderRadius: '24px',
+//               border: '1px solid #e5e7eb'
+//             }}>
+//               {Object.keys(programData).map((tab) => (
+//                 <button
+//                   key={tab}
+//                   onClick={() => setActiveTab(tab)}
+//                   style={{
+//                     padding: '16px 32px',
+//                     borderRadius: '18px',
+//                     fontSize: '14px',
+//                     fontWeight: '800',
+//                     border: 'none',
+//                     cursor: 'pointer',
+//                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+//                     backgroundColor: activeTab === tab ? '#0056b3' : 'transparent',
+//                     color: activeTab === tab ? '#ffffff' : '#6b7280',
+//                     boxShadow: activeTab === tab ? '0 10px 25px -5px rgba(0, 86, 179, 0.4)' : 'none',
+//                   }}
+//                 >
+//                   {tab}
+//                 </button>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Grid with Premium Cards */}
+//         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+//           {programData[activeTab].items.map((item, idx) => (
+//             <div 
+//               key={idx} 
+//               className="program-card"
+//               style={{ 
+//                 backgroundColor: '#ffffff', 
+//                 padding: '48px 40px', 
+//                 borderRadius: '40px', 
+//                 border: '1px solid #f3f4f6',
+//                 boxShadow: '0 20px 50px rgba(0, 0, 0, 0.03)',
+//                 transition: 'all 0.4s ease',
+//                 display: 'flex',
+//                 flexDirection: 'column',
+//                 justifyContent: 'space-between',
+//                 minHeight: '420px'
+//               }}
+//             >
+//               <div>
+//                 <div style={{ 
+//                   display: 'inline-flex', 
+//                   padding: '8px 16px', 
+//                   backgroundColor: '#f0f9ff', 
+//                   color: '#0056b3', 
+//                   borderRadius: '12px', 
+//                   fontSize: '10px', 
+//                   fontWeight: '900', 
+//                   textTransform: 'uppercase', 
+//                   letterSpacing: '0.1em',
+//                   marginBottom: '32px'
+//                 }}>
+//                   {item.highlight}
+//                 </div>
+//                 {/* <h3 style={{ fontSize: '24px', fontWeight: '900', color: '#111827', marginBottom: '12px', lineHeight: '1.2' }}>
+//                   {item.subject}
+//                 </h3>Explore Program */}
+
+//                 <p style={{ fontSize: '14px', fontWeight: '700', color: '#0056b3', opacity: '0.8' }}>
+//                   {item.sessions} Personalized Sessions
+//                 </p>
+//               </div>
+              
+//               <div style={{ marginTop: '40px' }}>
+//                 <div style={{ height: '1px', width: '100%', backgroundColor: '#f3f4f6', marginBottom: '32px' }} />
+//                 <p style={{ fontSize: '10px', fontWeight: '900', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '8px' }}>
+//                   Total Investment
+//                 </p>
+//                 <p style={{ fontSize: '32px', fontWeight: '900', color: '#111827', margin: 0 }}>
+//                   {/* {item.price} */}
+                  
+//                 </p>
+//                 <button style={{ 
+//                   width: '100%', 
+//                   marginTop: '32px', 
+//                   padding: '20px', 
+//                   borderRadius: '20px', 
+//                   backgroundColor: '#111827', 
+//                   color: '#ffffff', 
+//                   fontSize: '14px', 
+//                   fontWeight: '800', 
+//                   border: 'none', 
+//                   cursor: 'pointer',
+//                   transition: 'background-color 0.3s ease'
+//                 }}>
+//                   Request Demo Class
+//                 </button>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Footer Note */}
+//         <div style={{ marginTop: '64px', textAlign: 'center' }}>
+//           <div style={{ 
+//             display: 'inline-flex', 
+//             alignItems: 'center', 
+//             gap: '12px', 
+//             padding: '12px 24px', 
+//             backgroundColor: '#ecfdf5', 
+//             borderRadius: '100px',
+//             border: '1px solid #d1fae5'
+//           }}>
+//             <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10b981' }} />
+//             <span style={{ fontSize: '13px', fontWeight: '700', color: '#065f46' }}>Demo classes for all programs are free of cost.</span>
+//           </div>
+//         </div>
+//       </div>
+
+//       <style jsx>{`
+//         .program-card:hover {
+//           transform: translateY(-12px);
+//           box-shadow: 0 40px 80px rgba(0, 86, 179, 0.12) !important;
+//           border-color: #0056b3 !important;
+//         }
+//         .program-card button:hover {
+//           background-color: #0056b3 !important;
+//         }
+//       `}</style>
+//     </section>
+//   );
+// }
+
+
+
 "use client";
 
 import { useState } from 'react';
@@ -403,8 +592,10 @@ export default function Programs() {
                   Total Investment
                 </p>
                 <p style={{ fontSize: '32px', fontWeight: '900', color: '#111827', margin: 0 }}>
-                  {item.price}
+                  {/* {item.price} */}
+                  
                 </p>
+                <a href="/contact">
                 <button style={{ 
                   width: '100%', 
                   marginTop: '32px', 
@@ -420,6 +611,7 @@ export default function Programs() {
                 }}>
                   Request Demo Class
                 </button>
+                </a>
               </div>
             </div>
           ))}

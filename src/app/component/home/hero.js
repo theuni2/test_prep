@@ -685,8 +685,10 @@ export default function LuxuryHero() {
              transition={{ delay: 0.4 }}
              className="max-w-2xl mx-auto text-lg lg:text-xl text-gray-500 font-medium leading-relaxed mb-14"
           >
-            Niche preparation with expert mentoring for <span className="text-gray-900 font-bold underline decoration-[#0056b3]/20 underline-offset-8">LSAT, UCAT, and Olympiads.</span> 
+            Niche preparation with expert mentoring for <span className="text-gray-900 font-bold underline decoration-[#0056b3]/20 underline-offset-8">AP, IB and IGCSE</span> 
           </motion.p>
+
+
 
           {/* CTAs */}
           <motion.div 

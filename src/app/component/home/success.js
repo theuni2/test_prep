@@ -77,6 +77,7 @@
 //   );
 // }
 
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -187,20 +188,14 @@ export default function Success() {
 
         {/* View All CTA - Levelled Up */}
         <div className="mt-24 text-center">
-          {/* <Link href="/results" className="group relative inline-flex items-center gap-6 px-12 py-6 bg-gray-900 text-white rounded-[2rem] overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl">
-            <span className="relative z-10 font-black text-lg tracking-tight">Explore All 120+ Success Stories</span>
-            <div className="relative z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#0056b3] transition-colors">
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </div>
-            {/* Background Glow on Hover */}
-            {/* <div className="absolute inset-0 bg-[#0056b3] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-          </Link> */} 
+    
           
           <p className="mt-8 text-sm font-bold text-gray-400 uppercase tracking-widest">
-            A division of <span className="text-gray-900">Uni Discovery</span>
+            A division of <span className="text-gray-900"> <a href="https://www.theunidiscovery.com" target="_blank" rel="noopener noreferrer">Uni Discovery</a></span>
           </p>
         </div>
       </div>
     </section>
   );
 }
+
